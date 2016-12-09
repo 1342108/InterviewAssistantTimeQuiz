@@ -1,63 +1,85 @@
 package com.example.android.homepagev3;
 
+
 import android.app.Activity;
-import android.app.SearchManager;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.ExpandableListView;
-import java.util.ArrayList;
-import android.os.Bundle;
-import android.app.Activity;
-import android.app.SearchManager;
-import android.content.Context;
-import android.view.Menu;
-import android.widget.ExpandableListView;
-import android.widget.ListView;
-import android.widget.SearchView;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 
-import static android.R.attr.resource;
+import java.util.Arrays;
 
-public class homepage extends Activity {
+import static android.R.attr.button;
+import static com.example.android.homepagev3.R.id.allButton;
 
-    ListView lv;
-    SearchView sv;
-    String[] skills = {"Organisation", "Initiative", "Creativity", "Client focus", "Commercial awareness", "Communication", "Teamwork", "Leadership", "Self motivation", "Adaptability", "Time management", "Decision making", "Trustworthiness"};
-    ArrayAdapter<String> adapter;
+public class homepage extends Activity implements TextWatcher {
+
+
+    AutoCompleteTextView act;
+    String skills[] = {"Adaptability", "Creativity", "Teamwork", "Responsibility",
+            "Commercial awareness", "Decision making", "Career motivation", "Communication",
+            "Leadership", "Trustworthiness", "Problem solving", "Organisation",
+            "Initiative", "Self motivation", "Client focus", "Attention to detail",
+            "Meeting standards", "Persuading others", "Results orientation", "Strengths",
+            "Weaknesses", "Analytical", "Responding to change", "Versatility"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_homepage);
 
-        lv = (ListView) findViewById(R.id.skills_list_view);
-        sv = (SearchView) findViewById(R.id.skills_search_view);
+        Arrays.sort(skills);
+        act = (AutoCompleteTextView) findViewById(R.id.searchAutoCompleteTextView);
+        act.addTextChangedListener(this);
+        act.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, skills));
+    }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, skills);
-        lv.setAdapter(adapter);
+    public void goToBrowseAll(View view)
+    {
+     Intent nextPage = new Intent(homepage.this, AllSkills.class);
+        startActivity(nextPage);
+    }
 
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String text) {
-                return false;
-            }
+    public void goToQuiz(View view)
+    {
+        Intent nextPage = new Intent(homepage.this, AllSkills.class);
+        startActivity(nextPage);
+    }
 
-            @Override
-            public boolean onQueryTextChange(String text) {
+    public void goToSettings(View view)
+    {
+        Intent nextPage = new Intent(homepage.this, AllSkills.class);
+        startActivity(nextPage);
+    }
 
-                adapter.getFilter().filter(text);
+    public void goToPractice(View view)
+    {
+        Intent nextPage = new Intent(homepage.this, AllSkills.class);
+        startActivity(nextPage);
+    }
 
-                return false;
-            }
-        });
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+    }
 
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable arg0) {
 
     }
 }
