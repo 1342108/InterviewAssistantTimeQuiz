@@ -68,6 +68,12 @@ public class homepage extends Activity implements TextWatcher {
         startActivity(nextPage);
     }
 
+    public void goToVideos(View view)
+    {
+        Intent nextPage = new Intent(homepage.this, AllSkills.class);
+        startActivity(nextPage);
+    }
+
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
