@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.android.quiz_screen.MainActivity">
+
+    <Button
+        android:text="Answer D"
+        android:textColor="#ffffff"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/Answer_D"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/Answer_C"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="#2e6edd"/>
+
+    <Button
+        android:text="Answer A"
+        android:textColor="#ffffff"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/Answer_A"
+        android:layout_above="@+id/Answer_C"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="15dp"
+        android:background="#2e6edd"/>
+
+    <Button
+        android:text="Answer B"
+        android:textColor="#ffffff"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/Answer_B"
+        android:layout_above="@+id/Answer_D"
+        android:layout_toRightOf="@+id/Answer_A"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="#2e6edd"/>
+
+    <Button
+        android:text="Answer C"
+        android:textColor="#ffffff"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/Answer_C"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="15dp"
+        android:background="#2e6edd"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/interviewpic"
+        android:id="@+id/imageView"
+        android:layout_alignLeft="@+id/Answer_A"
+        android:layout_alignEnd="@+id/TV_question"
+        android:layout_alignStart="@+id/Answer_A"
+        android:layout_above="@+id/TV_question"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:text="This is a silly question that needs to be up to in order to test if this works correctly?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TV_question"
+        android:fontFamily="sans-serif"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:background="#2e6edd"
+        android:layout_above="@+id/Answer_A"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView"
+        android:id="@+id/chronometer4" />
+
+</RelativeLayout>

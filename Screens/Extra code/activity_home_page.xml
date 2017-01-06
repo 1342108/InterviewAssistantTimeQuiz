@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_home_page"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding = "32dp"
+    tools:context="com.example.android.homepage.HomePage">
+
+    <Button
+        android:id="@+id/interview_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="goTo"/>
+
+    <Button
+        android:id="@+id/meeting_button"
+        android:layout_marginLeft="120dp"
+        android:layout_toRightOf="@id/interview_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/introduce_button"
+        android:layout_below="@id/interview_button"
+        android:layout_marginTop="120dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goTo"/>
+    />
+
+    <Button
+        android:id="@+id/argument_button"
+        android:layout_below="@id/introduce_button"
+        android:layout_marginTop="120dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goTo"/>
+    />
+
+    <TextView
+        android:text="Interviews"
+        android:id="@+id/interview_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/interview_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:text="Introducing someone"
+        android:id="@+id/introduce_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/introduce_button"
+        android:layout_alignLeft="@+id/interview_text_view"
+        android:layout_alignStart="@+id/interview_text_view"
+        android:layout_alignRight="@+id/introduce_button"
+        android:layout_alignEnd="@+id/introduce_button" />
+
+    <Button
+        android:id="@+id/group_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/introduce_button"
+        android:layout_alignBottom="@+id/introduce_button"
+        android:layout_alignLeft="@+id/meeting_button"
+        android:layout_alignStart="@+id/meeting_button"
+        android:onClick="goTo"/>
+    />
+
+    <TextView
+        android:text="Group work"
+        android:id="@+id/group_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/group_button"
+        android:layout_alignRight="@+id/group_button"
+        android:layout_alignEnd="@+id/group_button" />
+
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/argument_button"
+        android:layout_alignBottom="@+id/argument_button"
+        android:layout_alignRight="@+id/group_text_view"
+        android:layout_alignEnd="@+id/group_text_view"
+        android:onClick="goTo"/>
+    />
+
+    <TextView
+        android:text="Arguments"
+        android:id="@+id/argument_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/argument_button"
+        android:layout_alignLeft="@+id/introduce_text_view"
+        android:layout_alignStart="@+id/introduce_text_view" />
+
+    <TextView
+        android:text="Settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/settings_button"
+        android:layout_alignLeft="@+id/group_text_view"
+        android:layout_alignStart="@+id/group_text_view" />
+
+    <TextView
+        android:text="Meeting for
+the first time"
+        android:id="@+id/meeting_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/meeting_button"
+        android:layout_alignRight="@+id/meeting_button"
+        android:layout_alignEnd="@+id/meeting_button"
+        android:layout_alignLeft="@+id/meeting_button"
+        android:layout_alignStart="@+id/meeting_button" />
+
+</RelativeLayout>
