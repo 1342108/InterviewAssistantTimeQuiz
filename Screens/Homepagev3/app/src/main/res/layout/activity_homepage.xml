@@ -5,23 +5,121 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    android:background="@android:color/holo_blue_light"
+    android:background="#29B6F6"
+    android:orientation="vertical"
     tools:context="com.example.android.homepagev3.homepage">
 
-    <EditText
-        android:id="@+id/skills_search_view"
+    <AutoCompleteTextView
+        android:id="@+id/searchAutoCompleteTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/searchHint"
+        android:completionThreshold="1" />
 
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:queryHint="Search Skills..."/>
-
-    <ListView
-        android:id="@+id/skills_list_view"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/allButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/browseAll"
+        android:layout_below="@id/searchAutoCompleteTextView"
+        android:onClick="goToBrowseAll"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search"
+        android:layout_alignBaseline="@+id/allButton"
+        android:layout_alignBottom="@+id/allButton"
+        android:layout_alignParentRight="true" />
+
+    <ImageView
+        android:id="@+id/videosImageButton"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/play"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="goToVideos"/>
+
+    <ImageButton
+        android:id="@+id/practiceImageButton"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:scaleType="fitCenter"
+        android:background="@null"
+        android:src="@drawable/speech_bubble"
+        android:onClick="goToPractice"
+        android:layout_alignTop="@+id/videosImageButton"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/skills_search_view" />
+        android:layout_alignParentStart="true" />
+
+
+    <ImageButton
+        android:id="@+id/quizImageButton"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@null"
+        android:src="@drawable/question_mark"
+        android:scaleType="fitCenter"
+        android:onClick="goToQuiz"
+        android:layout_marginTop="21dp"
+        android:layout_below="@+id/practiceTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:id="@+id/settingsImageButton"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:scaleType="fitCenter"
+        android:background="@null"
+        android:src="@drawable/spanner"
+        android:onClick="goToSettings"
+        android:layout_alignTop="@+id/quizImageButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/practiceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visual Practice"
+        android:layout_below="@id/practiceImageButton"
+        android:layout_marginBottom="40dp"/>
+
+    <TextView
+        android:id="@+id/quizTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quiz"
+        android:layout_below="@+id/settingsImageButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp" />
+
+    <TextView
+        android:id="@+id/videosTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Videos"
+        android:layout_alignBaseline="@+id/practiceTextView"
+        android:layout_alignBottom="@+id/practiceTextView"
+        android:layout_alignLeft="@+id/settingsTextView"
+        android:layout_alignStart="@+id/settingsTextView"
+        android:layout_marginBottom="40dp"/>
+
+    <TextView
+        android:id="@+id/settingsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_below="@+id/quizImageButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
