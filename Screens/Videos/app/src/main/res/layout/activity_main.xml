@@ -4,50 +4,12 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:padding="16dp"
+    android:orientation="vertical"
     tools:context="com.example.android.videos.MainActivity">
 
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/youtube_player1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#fff"/>
-
-    <TextView
-        android:id="@+id/video1TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/youtube_player1"
-        android:text="7 body language tips to ace your next job interview"/>
-
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/youtube_player2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/video1TextView"
-        android:background="#fff"/>
-
-    <TextView
-        android:id="@+id/video2TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/youtube_player2"
-        android:text="NAME OF VIDEO"/>
-
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/youtube_player3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/video2TextView"
-        android:background="#fff"/>
-
-    <TextView
-        android:id="@+id/video3TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/youtube_player3"
-        android:text="NAME OF VIDEO"/>
+    <ListView
+        android:id="@+id/videoTitleListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

@@ -1,117 +1,80 @@
 package com.example.android.videos;
 
-import android.support.annotation.NonNull;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-import com.google.android.youtube.player.YouTubeBaseActivity;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerView;
+/**
+ * Main class where there is a list of video titles which the user can click on one
+ */
+public class MainActivity extends AppCompatActivity {
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-
-import static android.provider.MediaStore.Video.Thumbnails.VIDEO_ID;
-
-public class MainActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
-
-    public static final String API_KEY = "AIzaSyCWuaDmVK3n0GxOdrdRCGXHOE3-xJWsg8I";
-    public static final String VIDEO_ID1 = "PCWVi5pAa30";
-    public static final String VIDEO_ID2 = "JyxGSnQCSl8";
-    public static final String VIDEO_ID3 = "4o7GtD6KuZU";
-
+    String[] videoTitles = {"5 Body Language Tips for your Next Job Interview",
+            "6 Tips for the Best Body Language in Interviews #WisdomWednesday",
+            "7 body language tricks to ace your next job interview",
+            "Interviewing and Selling Yourself",
+            "Job Interview Tips - How to Prepare for a Job Interview",
+            "Job Interview Tips - Job Interview Questions and Answers",};
+    ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        /** Initialising YT Player View **/
-        YouTubePlayerView youTubePlayerView1 = (YouTubePlayerView) findViewById(R.id.youtube_player1);
-        youTubePlayerView1.initialize(API_KEY, this);
+        lv = (ListView) findViewById(R.id.videoTitleListView);
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, videoTitles);
+        lv.setAdapter(adapter);
 
-        YouTubePlayerView youTubePlayerView2 = (YouTubePlayerView) findViewById(R.id.youtube_player2);
-        youTubePlayerView1.initialize(API_KEY, this);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-        YouTubePlayerView youTubePlayerView3 = (YouTubePlayerView) findViewById(R.id.youtube_player3);
-        youTubePlayerView1.initialize(API_KEY, this);
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                int itemPosition = position; // Each item in ListView
+
+
+                switch(itemPosition) { // Each case takes to corresponding video (could be inefficient if more videos added. Any different ideas?)
+
+                    case 0:
+                        Intent intent = new Intent(MainActivity.this, BodyLanguage1.class);
+                        startActivity(intent);
+                        break;
+
+                    case 1:
+                        Intent intent1 = new Intent(MainActivity.this, BodyLanguage2.class);
+                        startActivity(intent1);
+                        break;
+
+                    case 2:
+                        Intent intent2 = new Intent(MainActivity.this, BodyLanguage3.class);
+                        startActivity(intent2);
+                        break;
+
+                    case 3:
+                        Intent intent3 = new Intent(MainActivity.this, Interview1.class);
+                        startActivity(intent3);
+                        break;
+
+                    case 4:
+                        Intent intent4 = new Intent(MainActivity.this, Interview2.class);
+                        startActivity(intent4);
+                        break;
+
+                    case 5:
+                        Intent intent5 = new Intent(MainActivity.this, Interview3.class);
+                        startActivity(intent5);
+                        break;
+                }
+            }
+        });
     }
-
-    @Override
-    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
-        youTubePlayer.setPlayerStateChangeListener(playerStateChangeListener);
-        youTubePlayer.setPlaybackEventListener(playbackEventListener);
-
-        if(!wasRestored) {
-            youTubePlayer.cueVideos(videoIDString);
-        }
-    }
-
-    @Override
-    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-        Toast.makeText(this, "Failed to Initialise", Toast.LENGTH_LONG).show();
-    }
-
-    private YouTubePlayer.PlaybackEventListener playbackEventListener = new YouTubePlayer.PlaybackEventListener() {
-        @Override
-        public void onPlaying() {
-
-        }
-
-        @Override
-        public void onPaused() {
-
-        }
-
-        @Override
-        public void onStopped() {
-
-        }
-
-        @Override
-        public void onBuffering(boolean arg0) {
-
-        }
-
-        @Override
-        public void onSeekTo(int i) {
-
-        }
-    };
-
-    private YouTubePlayer.PlayerStateChangeListener playerStateChangeListener = new YouTubePlayer.PlayerStateChangeListener() {
-        @Override
-        public void onLoading() {
-
-        }
-
-        @Override
-        public void onLoaded(String arg0) {
-
-        }
-
-        @Override
-        public void onAdStarted() {
-
-        }
-
-        @Override
-        public void onVideoStarted() {
-
-        }
-
-        @Override
-        public void onVideoEnded() {
-
-        }
-
-        @Override
-        public void onError(YouTubePlayer.ErrorReason arg0) {
-
-        }
-    };
 }

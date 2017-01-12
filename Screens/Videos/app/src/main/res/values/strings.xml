@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Videos</string>
+    <string name="body_language1"></string>
+    <string name="body_language2">6 Tips for the Best Body Language in Interviews #WisdomWednesday</string>
+    <string name="body_language3">7 body language tricks to ace your next job interview</string>
+    <string name="interview1">Interviewing and Selling Yourself</string>
+    <string name="interview2">Job Interview Tips - How to Prepare for a Job Interview</string>
+    <string name="interview3">Job Interview Tips - Job Interview Questions and Answers</string>
+
 </resources>
