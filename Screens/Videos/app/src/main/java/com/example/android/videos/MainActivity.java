@@ -41,39 +41,45 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 int itemPosition = position; // Each item in ListView
 
+                /**
+                 * Moves from ListView page to video
+                 */
+                Intent random = new Intent(MainActivity.this,BodyLanguage1.class);
+                random.putExtra("title",videoTitles[position]); // Gets the title of the video from what was in the ListView at position X
+                startActivity(random);
 
-                switch(itemPosition) { // Each case takes to corresponding video (could be inefficient if more videos added. Any different ideas?)
-
-                    case 0:
-                        Intent intent = new Intent(MainActivity.this, BodyLanguage1.class);
-                        startActivity(intent);
-                        break;
-
-                    case 1:
-                        Intent intent1 = new Intent(MainActivity.this, BodyLanguage2.class);
-                        startActivity(intent1);
-                        break;
-
-                    case 2:
-                        Intent intent2 = new Intent(MainActivity.this, BodyLanguage3.class);
-                        startActivity(intent2);
-                        break;
-
-                    case 3:
-                        Intent intent3 = new Intent(MainActivity.this, Interview1.class);
-                        startActivity(intent3);
-                        break;
-
-                    case 4:
-                        Intent intent4 = new Intent(MainActivity.this, Interview2.class);
-                        startActivity(intent4);
-                        break;
-
-                    case 5:
-                        Intent intent5 = new Intent(MainActivity.this, Interview3.class);
-                        startActivity(intent5);
-                        break;
-                }
+//                switch(itemPosition) { // Each case takes to corresponding video (could be inefficient if more videos added. Any different ideas?)
+//
+//                    case 0:
+//                        Intent intent = new Intent(MainActivity.this, BodyLanguage1.class);
+//                        startActivity(intent);
+//                        break;
+//
+//                    case 1:
+//                        Intent intent1 = new Intent(MainActivity.this, BodyLanguage2.class);
+//                        startActivity(intent1);
+//                        break;
+//
+//                    case 2:
+//                        Intent intent2 = new Intent(MainActivity.this, BodyLanguage3.class);
+//                        startActivity(intent2);
+//                        break;
+//
+//                    case 3:
+//                        Intent intent3 = new Intent(MainActivity.this, Interview1.class);
+//                        startActivity(intent3);
+//                        break;
+//
+//                    case 4:
+//                        Intent intent4 = new Intent(MainActivity.this, Interview2.class);
+//                        startActivity(intent4);
+//                        break;
+//
+//                    case 5:
+//                        Intent intent5 = new Intent(MainActivity.this, Interview3.class);
+//                        startActivity(intent5);
+//                        break;
+//                }
             }
         });
     }
