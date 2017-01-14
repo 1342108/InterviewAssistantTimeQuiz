@@ -10,7 +10,7 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 
 
-public class BodyLanguage1 extends AppCompatActivity {
+public class VideoPlayer extends AppCompatActivity {
 
     ImageButton iButton;
     VideoView video;
@@ -63,19 +63,12 @@ public class BodyLanguage1 extends AppCompatActivity {
         video.seekTo(1000); // Thumbnail set before video is played
     }
 
-
     /**
      * Plays the video when play button is clicked
      */
     public void playVideo(View v)
     {
         iButton.setVisibility(View.GONE); // Button disappears after it is pressed
-//        String videoPath = "android.resource://com.example.android.videos/"+R.raw.body_language1; //String variable which contains path to mp4 file
-//        Uri uri = Uri.parse(videoPath); // Uniform Resource Identifier - accepts a string of chars used to identify the resource
-//        video.setVideoURI(uri); // Finds the video using the uri variable containing the path to the video
-//        video.setMediaController(mediaC);
-//        mediaC.setAnchorView(video);
         video.start();
-
     }
 }

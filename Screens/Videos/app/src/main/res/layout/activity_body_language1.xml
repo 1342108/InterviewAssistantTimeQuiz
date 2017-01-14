@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#000000"
     android:orientation="horizontal"
-    tools:context="com.example.android.videos.BodyLanguage1">
+    tools:context="com.example.android.videos.VideoPlayer">
 
     <VideoView
         android:id="@+id/bodyLanguage1VideoView"
