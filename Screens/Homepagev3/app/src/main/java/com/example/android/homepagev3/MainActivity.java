@@ -2,7 +2,6 @@ package com.example.android.homepagev3;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,14 +11,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 
 import java.util.Arrays;
 
-import static android.R.attr.button;
-import static com.example.android.homepagev3.R.id.allButton;
-
-public class homepage extends Activity implements TextWatcher {
+public class MainActivity extends Activity implements TextWatcher {
 
 
     AutoCompleteTextView act;
@@ -36,41 +31,41 @@ public class homepage extends Activity implements TextWatcher {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_homepage);
+        setContentView(R.layout.activity_main);
 
         Arrays.sort(skills);
         act = (AutoCompleteTextView) findViewById(R.id.searchAutoCompleteTextView);
         act.addTextChangedListener(this);
-        act.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, skills));
+        act.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, skills));
     }
 
     public void goToBrowseAll(View view)
     {
-     Intent nextPage = new Intent(homepage.this, AllSkills.class);
+     Intent nextPage = new Intent(MainActivity.this, AllSkills.class);
         startActivity(nextPage);
     }
 
     public void goToQuiz(View view)
     {
-        Intent nextPage = new Intent(homepage.this, AllSkills.class);
+        Intent nextPage = new Intent(MainActivity.this, AllSkills.class);
         startActivity(nextPage);
     }
 
     public void goToSettings(View view)
     {
-        Intent nextPage = new Intent(homepage.this, AllSkills.class);
+        Intent nextPage = new Intent(MainActivity.this, AllSkills.class);
         startActivity(nextPage);
     }
 
     public void goToPractice(View view)
     {
-        Intent nextPage = new Intent(homepage.this, AllSkills.class);
+        Intent nextPage = new Intent(MainActivity.this, AllSkills.class);
         startActivity(nextPage);
     }
 
     public void goToVideos(View view)
     {
-        Intent nextPage = new Intent(homepage.this, AllSkills.class);
+        Intent nextPage = new Intent(MainActivity.this, AllSkills.class);
         startActivity(nextPage);
     }
 

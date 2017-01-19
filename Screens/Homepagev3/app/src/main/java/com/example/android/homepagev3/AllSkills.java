@@ -1,6 +1,6 @@
 package com.example.android.homepagev3;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -9,7 +9,7 @@ import android.widget.ListView;
 
 import java.util.Arrays;
 
-public class AllSkills extends AppCompatActivity {
+public class AllSkills extends Activity {
 
     String skills[] = {"Adaptability", "Creativity", "Teamwork", "Responsibility",
             "Commercial awareness", "Decision making", "Career motivation", "Communication",
@@ -22,9 +22,10 @@ public class AllSkills extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_skills);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_all_skills);
         Arrays.sort(skills);
         lv = (ListView) findViewById(R.id.skillsListView);
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, skills);

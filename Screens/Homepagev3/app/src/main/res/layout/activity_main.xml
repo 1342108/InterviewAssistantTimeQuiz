@@ -7,7 +7,7 @@
     android:padding="8dp"
     android:background="#29B6F6"
     android:orientation="vertical"
-    tools:context="com.example.android.homepagev3.homepage">
+    tools:context="com.example.android.homepagev3.MainActivity">
 
     <AutoCompleteTextView
         android:id="@+id/searchAutoCompleteTextView"
