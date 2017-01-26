@@ -8,7 +8,6 @@
 
 
     <Button
-        android:text="Answer D"
         android:textColor="#ffffff"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
@@ -20,7 +19,6 @@
         android:background="#2e6edd"/>
 
     <Button
-        android:text="Answer A"
         android:textColor="#ffffff"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
@@ -32,7 +30,6 @@
         android:background="#2e6edd"/>
 
     <Button
-        android:text="Answer B"
         android:textColor="#ffffff"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
@@ -44,7 +41,6 @@
         android:background="#2e6edd"/>
 
     <Button
-        android:text="Answer C"
         android:textColor="#ffffff"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
@@ -68,7 +64,6 @@
         android:layout_alignRight="@+id/mQuestionView" />
 
     <TextView
-        android:text="This is a silly question that needs to be up to in order to test if this works correctly?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/mQuestionView"
@@ -90,5 +85,11 @@
         android:layout_alignRight="@+id/mImageView"
         android:layout_alignEnd="@+id/mImageView"
         android:id="@+id/chronometer4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/qNumberView" />
 
 </RelativeLayout>

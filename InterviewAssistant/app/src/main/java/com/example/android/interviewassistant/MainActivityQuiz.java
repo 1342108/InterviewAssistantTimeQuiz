@@ -13,11 +13,12 @@ public class MainActivityQuiz extends AppCompatActivity {
 
     private TextView mQuestionView;
     private ImageView mImageView;
-    private TextView mScoreView;
+    private TextView qNumberView;
     private Button mAnswerA;
     private Button mAnswerB;
     private Button mAnswerC;
     private Button mAnswerD;
+
 
     private String mAnswer;
     private int mScore = 0;
@@ -30,10 +31,13 @@ public class MainActivityQuiz extends AppCompatActivity {
 
         //mScoreView = (TextView)findViewById(R.id.score);
         mQuestionView = (TextView) findViewById(R.id.mQuestionView);
+        qNumberView = (TextView)findViewById(R.id.qNumberView);
         mAnswerA = (Button) findViewById(R.id.mAnswerA);
         mAnswerB = (Button) findViewById(R.id.mAnswerB);
         mAnswerC = (Button) findViewById(R.id.mAnswerC);
         mAnswerD = (Button) findViewById(R.id.mAnswerD);
+
+
 
         updateQuestion();
 
@@ -49,8 +53,10 @@ public class MainActivityQuiz extends AppCompatActivity {
                     updateQuestion();
                 }
                 else
+                {
                     mScore = mScore - 1;
-                updateQuestion();
+                    updateQuestion();
+                }
             }
         });
         //End of Button Listener for Answer A
@@ -67,8 +73,10 @@ public class MainActivityQuiz extends AppCompatActivity {
                     updateQuestion();
                 }
                 else
+                {
                     mScore = mScore - 1;
-                updateQuestion();
+                    updateQuestion();
+                }
             }
         });
         //End of Button Listener for Answer B
@@ -85,8 +93,11 @@ public class MainActivityQuiz extends AppCompatActivity {
                     updateQuestion();
                 }
                 else
+                {
                     mScore = mScore - 1;
-                updateQuestion();
+                    updateQuestion();
+                }
+
             }
         });
         //End of Button Listener for Answer C
@@ -103,13 +114,20 @@ public class MainActivityQuiz extends AppCompatActivity {
                     updateQuestion();
                 }
                 else
+                {
                     mScore = mScore - 1;
-                updateQuestion();
+                    updateQuestion();
+                }
+
             }
         });
         //End of Button Listener for Answer D
     }
 
+    private void updateQnumber()
+    {
+        qNumberView.setText("" + mQuestionNumber);
+    }
     private void updateQuestion()
     {
         mQuestionView.setText(mQuestionLibrary.getQuestion(mQuestionNumber));
@@ -118,7 +136,10 @@ public class MainActivityQuiz extends AppCompatActivity {
         mAnswerC.setText(mQuestionLibrary.getAnswerC(mQuestionNumber));
         mAnswerD.setText(mQuestionLibrary.getAnswerD(mQuestionNumber));
 
+
         mAnswer = mQuestionLibrary.getCorrectAnswer(mQuestionNumber);
         mQuestionNumber++;
+        updateQnumber();
+
     }
 }

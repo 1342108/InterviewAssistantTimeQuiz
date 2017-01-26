@@ -10,7 +10,7 @@ public class QuestionLibrary {
                     "What colour is the box above?",
                     "How many boxes are displayed above?",
                     "Is the sky blue?"
-            };
+};
 
     private String mChoices [][] =
             {
