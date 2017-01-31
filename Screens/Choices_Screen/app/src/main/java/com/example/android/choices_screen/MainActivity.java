@@ -44,55 +44,24 @@ public class MainActivity extends Activity {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
-        // Adding child data
-        listDataHeader.add("Questions");
-        listDataHeader.add("Body Language");
-        listDataHeader.add("Quiz");
-        listDataHeader.add("Video Practice");
+        // Adding child data. Copy this line and paste it below to add name of heading
+        listDataHeader.add("Heading 1");// Change "Heading 1" to desired heading
 
-        // Adding child data
+
+        //Copy the line below and paste below last line
+        //Change "questions" to appropriate variable name
         List<String> questions = new ArrayList<String>();
-        questions.add("Competency questions");
-        questions.add("Technical questions");
-        questions.add("Company questions");
-
-        List<String> bodyLanguage = new ArrayList<String>();
-        bodyLanguage.add("Good body language");
-        bodyLanguage.add("Bad body language");
-        bodyLanguage.add("Examples");
-
-        List<String> quiz = new ArrayList<String>();
-        quiz.add("Start quiz");
-        quiz.add("Practice quiz");
-        quiz.add("Previous results");
 
 
-        List<String> videoPractice = new ArrayList<String>();
-        videoPractice.add("Video practice 1");
-        videoPractice.add("Video practice 2");
-        videoPractice.add("Video practice 3");
+        //Copy this line and paste it below to add another subheaing
+        questions.add("Subheading 1");// Change "Subheading #" to desired subheading
 
-        listDataChild.put(listDataHeader.get(0), questions); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), bodyLanguage);
-        listDataChild.put(listDataHeader.get(2), quiz);
-        listDataChild.put(listDataHeader.get(3), videoPractice);
 
-        /*Listview on child click listener
-        expListView.setOnChildClickListener(new OnChildClickListener() {
+        //Copy and paste the line below under itself and replace the number in the brackets
+        //to the corresponding heading (0 = heading 1, 1 = heading 2...etc.) AND
+        //change the "questions" to corresponding subheading
+        listDataChild.put(listDataHeader.get(0), questions);
 
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        listDataHeader.get(groupPosition)
-                                + " : "
-                                + listDataChild.get(
-                                listDataHeader.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT)
-                        .show();
-                return false;
-            }
-        });*/
+
     }
 }
