@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "898824653544",
+    "firebase_url": "https://interview-assistant-79355.firebaseio.com",
+    "project_id": "interview-assistant-79355",
+    "storage_bucket": "interview-assistant-79355.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898824653544:android:302949387ba96578",
+        "android_client_info": {
+          "package_name": "com.example.android.interviewassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898824653544-9dnjhirim12pl5fuuovhugh2uu1n5gom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnPlcCFi5GrG_I1GBKVEB8JR_sYRJfJOg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898824653544:android:32cbcab81f957486",
+        "android_client_info": {
+          "package_name": "om.example.android.loginregister"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898824653544-9dnjhirim12pl5fuuovhugh2uu1n5gom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnPlcCFi5GrG_I1GBKVEB8JR_sYRJfJOg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
