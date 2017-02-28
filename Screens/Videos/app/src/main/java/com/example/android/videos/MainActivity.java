@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
             "Job Interview Tips - Job Interview Questions and Answers",};
     ListView lv;
 
+    public static int vPosition; // position of ListView item that was clicked on
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                vPosition = position+1; // +1 to compensate for v_id table in database starting from 1
 
                 // Moves from ListView page to video
                 Intent goToVideoPlayer = new Intent(MainActivity.this, VideoPlayer.class);
-                goToVideoPlayer.putExtra("title", videoTitles[position]); // Gets the title of the video from what was in the ListView at position X
+                //goToVideoPlayer.putExtra("position", vPosition); // Gets the title of the video from what was in the ListView at position X
                 startActivity(goToVideoPlayer);
             }
         });

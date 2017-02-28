@@ -2,6 +2,7 @@ package com.example.android.videos;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,13 +18,16 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 
 public class VideoPlayer extends YouTubeBaseActivity implements
-        YouTubePlayer.OnInitializedListener {
-
-    // These are for the sake of the screens working, this is NOT the final product. Database connection needed.
-    private VideoData[] videoInfo = new VideoData[6]; // Storing the VideoData class info into an array
-    private String currentPath = ""; // The path in the current instance of this class
+        YouTubePlayer.OnInitializedListener
+{
+    public static String currentPath; // The path in the current instance of this class
 
     private YouTubePlayer YPlayer;
 
@@ -37,30 +41,12 @@ public class VideoPlayer extends YouTubeBaseActivity implements
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_video_player);
+
+        new GetFromDatabase().execute(); // Async task to access database to get video path
 
         YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.playerVideoView);
         youTubeView.initialize(YoutubeDeveloperKey, this);
-
-        // Assign the video titles to the link that corresponds to the video
-        videoInfo[0] = new VideoData("5 Body Language Tips for your Next Job Interview", "4o7GtD6KuZU");
-        videoInfo[1] = new VideoData("6 Tips for the Best Body Language in Interviews #WisdomWednesday", "JyxGSnQCSl8");
-        videoInfo[2] = new VideoData("7 body language tips to impress at your next job interview", "PCWVi5pAa30");
-        videoInfo[3] = new VideoData("Job Interview Tips - How to Prepare for a Job Interview", "0p_A2P_uvzc");
-        videoInfo[4] = new VideoData("Job Interview Tips - Job Interview Questions and Answers", "epcc9X1aS7o");
-        videoInfo[5] = new VideoData("Interviewing and Selling Yourself", "yVE4s7lU-zE");
-
-        Intent mainActivity = getIntent(); // Gets the intent from MainActivity
-        String title = mainActivity.getStringExtra("title"); // Gets the title from the ListView that we added with the intent in MainActivity
-
-        // Iterates through the array to find the same title
-        for (int i = 0; i < videoInfo.length; i++) {
-            if (title.equals(videoInfo[i].getTitle())) {
-                currentPath = videoInfo[i].getVideoPath();
-                break;
-            }
-        }
     }
 
     @Override
@@ -100,5 +86,47 @@ public class VideoPlayer extends YouTubeBaseActivity implements
 
     protected YouTubePlayer.Provider getYouTubePlayerProvider() {
         return (YouTubePlayerView) findViewById(R.id.playerVideoView);
+    }
+
+    private class GetFromDatabase extends AsyncTask<String,String,String>
+    {
+
+        @Override
+        protected String doInBackground(String... params)
+        {
+            try
+            {
+                Class.forName("com.mysql.jdbc.Driver");
+                // 1. get connection
+                Connection myConnection = DriverManager.getConnection("jdbc:mysql://134.83.83.25:47000/grp2_interview_assistant", "l2grp2","l2grp2");
+
+                // 2. create statement
+                Statement myStatement = myConnection.createStatement();
+
+                // 3. execute sql query
+                ResultSet myResultSet = myStatement.executeQuery("SELECT * FROM VIDEOS");
+
+                // 4. process the result set
+                int id;
+                while(myResultSet.next())
+                {
+                    id = myResultSet.getInt("v_id"); // gets current value of v_id
+
+                    // if the position of ListView is = to the video ID then get the video path and set currentPath to its value
+                    if(MainActivity.vPosition == id)
+                    {
+                        currentPath = myResultSet.getString("v_path").trim();
+                        System.out.println("THE CURRENT PATH IS: " +currentPath);
+                        break;
+                    }
+                }
+                myConnection.close();
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+            return currentPath;
+        }
     }
 }
