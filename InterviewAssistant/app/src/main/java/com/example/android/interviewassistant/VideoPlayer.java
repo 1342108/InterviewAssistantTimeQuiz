@@ -1,72 +1,125 @@
 package com.example.android.interviewassistant;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.MediaController;
-import android.widget.VideoView;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Toast;
 
-public class VideoPlayer extends AppCompatActivity {
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
 
-    ImageButton iButton;
-    VideoView video;
-    MediaController mediaC; // Adds things you'd find on a video player e.g. timeline, play/pause buttons
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-    private VideoData[] videoInfo = new VideoData[6]; // Using VideoData class to initialise an array of size 6 to contain all videos
+
+public class VideoPlayer extends YouTubeBaseActivity implements
+        YouTubePlayer.OnInitializedListener
+{
+    public static String currentPath; // The path in the current instance of this class
+
+    private YouTubePlayer YPlayer;
+
+    // Developer stuff
+    private static final String YoutubeDeveloperKey = "AIzaSyCZ9_aMpzA-V6wcHGuVKpSHEPWK1o0Gj5g";
+    private static final int RECOVERY_DIALOG_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_video_player);
-        iButton = (ImageButton) findViewById(R.id.playButton);
-        video = (VideoView) findViewById(R.id.videosVideoView);
-        mediaC = new MediaController(this);
+
+        new GetFromDatabase().execute(); // Async task to access database to get video path
+
+        YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.playerVideoView);
+        youTubeView.initialize(YoutubeDeveloperKey, this);
+    }
+
+    @Override
+    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
+        YPlayer = player;
 
         /**
-         * adding title and paths to mp4 files
+         * Now that this variable YPlayer is global you can access it
+         * throughout the activity, and perform all the player actions like
+         * play, pause and seeking to a position by code.
          */
-        videoInfo[0] = new VideoData("5 Body Language Tips for your Next Job Interview","android.resource://com.example.android.videos/"+R.raw.body_language1);
-        videoInfo[1] = new VideoData("6 Tips for the Best Body Language in Interviews #WisdomWednesday","android.resource://com.example.android.videos/"+R.raw.body_language2);
-        videoInfo[2] = new VideoData("7 body language tricks to ace your next job interview","android.resource://com.example.android.videos/"+R.raw.body_language3);
-        videoInfo[3] = new VideoData("Interviewing and Selling Yourself","android.resource://com.example.android.videos/"+R.raw.interview1);
-        videoInfo[4] = new VideoData("Job Interview Tips - How to Prepare for a Job Interview","android.resource://com.example.android.videos/"+R.raw.interview2);
-        videoInfo[5] = new VideoData("Job Interview Tips - Job Interview Questions and Answers","android.resource://com.example.android.videos/"+R.raw.interview3);
-
-        Intent mainActivity = getIntent(); // Gets the intent established in MainActivity.java
-
-        String title = mainActivity.getStringExtra("title"); // Gets the title from what was clicked on the ListView
-
-        /**
-         * Finds the video title corresponding to what was clicked on the ListView
-         */
-        for(int i = 0;i<videoInfo.length;i++) {
-            if(title.equals(videoInfo[i].getTitle())) {
-                setVideo(videoInfo[i]);
-                break;
-            }
+        if (!wasRestored) {
+            YPlayer.cueVideo(currentPath); // Play the video
         }
     }
-    /**
-     * Sets up the video before it is played
-     * @param videoData will be used to call the getVideoPath method in the VideoData class
-     */
-    private void setVideo(VideoData videoData) {
-        Uri uri = Uri.parse(videoData.getVideoPath()); // Uniform Resource Identifier - accepts a string of chars used to identify the resource
-        video.setVideoURI(uri); // Finds the video using the uri variable containing the path to the video
-        video.setMediaController(mediaC);
-        mediaC.setAnchorView(video);
-        video.seekTo(1000); // Thumbnail set before video is played
+
+    @Override
+    public void onInitializationFailure(YouTubePlayer.Provider provider,
+                                        YouTubeInitializationResult errorReason) {
+        if (errorReason.isUserRecoverableError()) {
+            errorReason.getErrorDialog(this, RECOVERY_DIALOG_REQUEST).show();
+        } else {
+            String errorMessage = String.format(
+                    "There was an error initializing the YouTubePlayer",
+                    errorReason.toString());
+            Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        }
     }
 
-    /**
-     * Plays the video when play button is clicked
-     */
-    public void playVideo(View v)
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == RECOVERY_DIALOG_REQUEST) {
+            // Retry initialization if user performed a recovery action
+            getYouTubePlayerProvider().initialize(YoutubeDeveloperKey, this);
+        }
+    }
+
+    protected YouTubePlayer.Provider getYouTubePlayerProvider() {
+        return (YouTubePlayerView) findViewById(R.id.playerVideoView);
+    }
+
+    private class GetFromDatabase extends AsyncTask<String,String,String>
     {
-        iButton.setVisibility(View.GONE); // Button disappears after it is pressed
-        video.start();
+
+        @Override
+        protected String doInBackground(String... params)
+        {
+            try
+            {
+                Class.forName("com.mysql.jdbc.Driver");
+                // 1. get connection
+                Connection myConnection = DriverManager.getConnection("jdbc:mysql://134.83.83.25:47000/grp2_interview_assistant", "l2grp2","l2grp2");
+
+                // 2. create statement
+                Statement myStatement = myConnection.createStatement();
+
+                // 3. execute sql query
+                ResultSet myResultSet = myStatement.executeQuery("SELECT * FROM VIDEOS");
+
+                // 4. process the result set
+                int id;
+                while(myResultSet.next())
+                {
+                    id = myResultSet.getInt("v_id"); // gets current value of v_id
+
+                    // if the position of ListView is = to the video ID then get the video path and set currentPath to its value
+                    if(VideosList.vPosition == id)
+                    {
+                        currentPath = myResultSet.getString("v_path").trim();
+                        break;
+                    }
+                }
+                myConnection.close();
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+            return currentPath;
+        }
     }
 }

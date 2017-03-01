@@ -7,7 +7,7 @@
     android:padding="8dp"
     android:background="#29B6F6"
     android:orientation="vertical"
-    tools:context="com.example.android.interviewassistant.MainActivityHomepage">
+    tools:context="com.example.android.interviewassistant.Homepage">
 
     <AutoCompleteTextView
         android:id="@+id/searchAutoCompleteTextView"
@@ -25,12 +25,14 @@
         android:onClick="goToBrowseAll"/>
 
     <Button
+        android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/search"
         android:layout_alignBaseline="@+id/allButton"
         android:layout_alignBottom="@+id/allButton"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:onClick="goToSkillsTips"/>
 
     <ImageButton
         android:id="@+id/videosImageButton"
