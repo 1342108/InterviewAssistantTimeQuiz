@@ -1,11 +1,14 @@
 package com.example.android.interviewassistant;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.sql.*;
 
 public class Quiz extends AppCompatActivity {
 
@@ -40,6 +43,8 @@ public class Quiz extends AppCompatActivity {
 
 
         updateQuestion();
+
+        new writeToDB().execute();
 
         //Start of Button Listener for Answer A
         mAnswerA.setOnClickListener(new View.OnClickListener() {
@@ -140,6 +145,32 @@ public class Quiz extends AppCompatActivity {
         mAnswer = mQuizQuestionLibrary.getCorrectAnswer(mQuestionNumber);
         mQuestionNumber++;
         updateQnumber();
+    }
+    private class writeToDB extends AsyncTask<String,String,String>
+    {
+        @Override
+        protected String doInBackground(String... strings)
+        {
+            try
+            {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection myConn = DriverManager.getConnection("jdbc:mysql://134.83.83.25:47000/grp2_interview_assistant",
+                        "l2grp2", "l2grp2");
+                Statement myStmt = myConn.createStatement();
 
+                String sql = "insert into QUIZ_DATA "
+                        + " (q_text, q_correct_answer, q_choice_text)"
+                        + " values ('What is life?', 1, 'We do not know yet')";
+                myStmt.executeUpdate(sql);
+                System.out.println("Insert Complete.");
+            }
+            catch (Exception exc)
+            {
+                exc.printStackTrace();
+            }
+
+
+            return null;
+        }
     }
 }
