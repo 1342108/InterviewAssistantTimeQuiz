@@ -1,0 +1,80 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.website{
+display: block;
+}
+
+.screenshot{
+
+}
+
+.App{
+
+    align-items: center;
+    background-color: teal;
+
+    color:white;
+}
+.boxW{
+    padding: 1%;
+    float:left;
+    display: flex;
+}
+.infoWill{
+ height: 300px;
+
+ max-width:300px;
+
+}
+.boxN{
+  padding: 1%;
+float:left;
+  display: flex;
+
+}
+.infoNick{
+max-width:300px;
+
+}
+.boxA{
+  padding: 1%;
+float:left;
+  display: flex;
+
+}
+.infoAnthea{
+max-width:300px;
+
+}
+.boxS{
+  padding: 1%;
+float:left;
+  display: flex;
+
+}
+.infoSamin{
+  max-width:300px;
+
+}
+.boxU{
+  padding: 1%;
+float:left;
+  display: flex;
+
+}
+.infoUsmana{
+max-width:300px;
+}
+.boxSh{
+  padding: 1%;
+float:left;
+  display: flex;
+
+}
+.infoShanil{
+max-width:300px;
+}
