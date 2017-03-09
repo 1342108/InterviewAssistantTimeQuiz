@@ -1,8 +1,4 @@
 package com.example.cs15wau.questions;
-
-/**
- * Created by cs15wau on 15/02/2017.
- */
 import java.util.HashMap;
 import java.util.List;
 import android.content.Context;
