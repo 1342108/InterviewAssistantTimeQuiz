@@ -21,10 +21,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     RadioButton rb;
     CheckBox a;
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+
+   
     private GoogleApiClient client;
 
     @Override
