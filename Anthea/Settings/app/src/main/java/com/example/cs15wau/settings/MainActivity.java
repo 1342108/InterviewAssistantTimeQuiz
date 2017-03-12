@@ -1,4 +1,4 @@
-package com.example.cs15wau.settings;
+package com.example.cs15amb1.settings;
 
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
