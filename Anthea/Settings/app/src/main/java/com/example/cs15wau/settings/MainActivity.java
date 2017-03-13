@@ -1,4 +1,4 @@
-package com.example.cs15amb1.settings;
+package com.example.cs15wau.settings;
 
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -11,26 +11,18 @@ import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     RadioGroup rg;
     RadioButton rb;
     CheckBox a;
 
-
-   
-    private GoogleApiClient client;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        rg = (RadioGroup) findViewById(R.id.radioGender);
-        a = (CheckBox) findViewById(R.id.notify_me_checkbox);
+        rg = (RadioGroup) findViewById(R.id.radioGender); //radion button to choose gender
+        a = (CheckBox) findViewById(R.id.notify_me_checkbox); // checkbox for gender
         a.setOnClickListener(this);
         Switch i = (Switch) findViewById(R.id.soundSwitch);
         i.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
