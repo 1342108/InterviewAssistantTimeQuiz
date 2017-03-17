@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_light">
+
+        <Button
+            android:text="Quiz"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="254dp"
+            android:id="@+id/button2"
+            android:layout_marginRight="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="goToQuiz"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/button3"
+            android:layout_alignEnd="@+id/button3"
+            android:background="@android:color/holo_blue_light" />
+
+        <Button
+            android:text="Timed Quiz"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="79dp"
+            android:onClick="goToMainActivity"
+            android:id="@+id/button3"
+            android:layout_below="@+id/button2"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/holo_blue_light" />
+    </RelativeLayout>
+
+</LinearLayout>

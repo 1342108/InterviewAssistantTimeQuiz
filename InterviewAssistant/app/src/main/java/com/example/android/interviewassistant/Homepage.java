@@ -49,9 +49,9 @@ public class Homepage extends Activity implements TextWatcher {
         startActivity(nextPage);
     }
 
-    public void goToQuiz(View view)
+    public void goToSelectQuiz(View view)
     {
-        Intent nextPage = new Intent(Homepage.this, Quiz.class);
+        Intent nextPage = new Intent(Homepage.this, SelectQuiz.class);
         startActivity(nextPage);
     }
 

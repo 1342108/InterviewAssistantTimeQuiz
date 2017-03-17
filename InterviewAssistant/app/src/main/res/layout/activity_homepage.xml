@@ -66,7 +66,7 @@
         android:background="@null"
         android:src="@drawable/question_mark"
         android:scaleType="fitCenter"
-        android:onClick="goToQuiz"
+        android:onClick="goToSelectQuiz"
         android:layout_marginTop="21dp"
         android:layout_below="@+id/practiceTextView"
         android:layout_alignParentLeft="true"

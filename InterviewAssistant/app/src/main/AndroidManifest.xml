@@ -34,12 +34,18 @@
             android:screenOrientation="portrait" />
         <activity android:name=".AllSkills" />
         <activity android:name=".VideosList" />
-        <activity android:name=".Quiz" />
+        <activity android:name=".SelectQuiz" />
+        <activity android:name=".Quiz"/>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".Playing" />
+        <activity android:name=".Done" />
+        <activity android:name=".Score"/>
         <activity
             android:name=".FaceTrackerActivity"
             android:label="Visial Practice"
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+
         <activity android:name=".VideoPlayer" />
         <activity android:name=".Settings" />
         <activity android:name=".SkillsTips"></activity>
